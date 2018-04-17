@@ -25,7 +25,6 @@ public class SkeletonButton extends JButton implements MouseListener{
 
 	@Override
 	public void mouseEntered(MouseEvent e) {
-		// TODO Auto-generated method stub
 		this.setBackground(Color.CYAN);
 		this.setForeground(Color.black);
 		
@@ -33,20 +32,17 @@ public class SkeletonButton extends JButton implements MouseListener{
 
 	@Override
 	public void mouseExited(MouseEvent e) {
-		// TODO Auto-generated method stub
 		this.setBackground(Color.BLUE);
 		this.setForeground(Color.white);
 	}
 
 	@Override
 	public void mousePressed(MouseEvent e) {
-		// TODO Auto-generated method stub
 		this.setForeground(Color.BLACK);
 	}
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
-		// TODO Auto-generated method stub
 		this.setBackground(Color.CYAN);
 		this.setForeground(Color.black);
 	}

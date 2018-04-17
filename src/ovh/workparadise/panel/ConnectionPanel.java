@@ -15,20 +15,20 @@ public class ConnectionPanel extends JPanel{
 
 	public ConnectionPanel() {
 		JPanel content = new JPanel();
-		content.setLayout(new BorderLayout());
 		
 		JTextField field = new JTextField("Entrez votre email");
-		field.setPreferredSize(new Dimension(110 , 25));
+		field.setPreferredSize(new Dimension(150, 25));
 		
 		JPasswordField field2 = new JPasswordField("Entrez votre motde passe");
-		field2.setPreferredSize(new Dimension(110 , 25));
+		field2.setPreferredSize(new Dimension(150, 25));
 		field2.setEchoChar('•');
 		
 		SkeletonButton button = new SkeletonButton("Connexion");
+		button.setSize(new Dimension(20, 20));
 		
-		content.add(field);
-		content.add(field2);
-		content.add(button);
+		this.add(field);
+		this.add(field2);
+		this.add(button);
 		
 	}
 }
