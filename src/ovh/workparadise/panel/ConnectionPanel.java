@@ -2,6 +2,7 @@ package ovh.workparadise.panel;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.GridLayout;
 
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
@@ -15,6 +16,7 @@ public class ConnectionPanel extends JPanel{
 
 	public ConnectionPanel() {
 		JPanel content = new JPanel();
+		content.setLayout(new GridLayout(10, 5));
 		
 		JTextField field = new JTextField("Entrez votre email");
 		field.setPreferredSize(new Dimension(150, 25));
