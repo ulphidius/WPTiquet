@@ -4,6 +4,7 @@ import java.awt.Dimension;
 import javax.swing.JFrame;
 
 import ovh.workparadise.panel.ConnectionPanel;
+import ovh.workparadise.panel.MenuPanel;
 
 public class Main {
 	public static void main(String[] args) {
@@ -14,8 +15,8 @@ public class Main {
 		frame.setTitle("Connexion");
 		frame.setLocationRelativeTo(null);
 		
-		ConnectionPanel content = new ConnectionPanel();
-		
+		//ConnectionPanel content = new ConnectionPanel();
+		MenuPanel content = new MenuPanel();
 		frame.setContentPane(content);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
