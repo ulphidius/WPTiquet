@@ -1,12 +1,12 @@
 package ovh.workparadise.classedb;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Date;
 
 
 public class ConnectionDB {
@@ -19,24 +19,24 @@ public class ConnectionDB {
 	private ResultSet _result = null;
 	
 	public ConnectionDB(String dbName) {
-		this._url = "jdbc:mysql://localhost:3306/" + dbName;
+		this._url = "jdbc:mysql://localhost:3306/" + dbName + "?verifyServerCertificate=false&useSSL=true&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
 		this._user = "test";
 		this._pwd = "test";
 	}
 	
 	public ConnectionDB(String dbName, String type) {
 		this(dbName);
-		this._url = "jdbc:" + type + "://localhost:3306/" + dbName;
+		this._url = "jdbc:" + type + "://localhost:3306/" + dbName + "?verifyServerCertificate=false&useSSL=true&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
 	}
 	
 	public ConnectionDB(String dbName, String type, String ip) {
 		this(dbName, type);
-		this._url = "jdbc:" + type + "://" + ip + ":3306/" + dbName;
+		this._url = "jdbc:" + type + "://" + ip + ":3306/" + dbName + "?verifyServerCertificate=false&useSSL=true&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
 	}
 	
 	public ConnectionDB(String dbName, String type, String ip, String number) {
 		this(dbName, type, ip);
-		this._url = "jdbc:" + type + "://" + ip + ":" + number + "/" + dbName;
+		this._url = "jdbc:" + type + "://" + ip + ":" + number + "/" + dbName + "?verifyServerCertificate=false&useSSL=true&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
 	}
 	
 	public ConnectionDB(String dbName, String type, String ip, String number, String user, String pwd) {
@@ -107,6 +107,16 @@ public class ConnectionDB {
 	
 	// Méthode
 	
+	public void driverLoad(String driver) {
+		try {
+			Class.forName(driver);
+		
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+			
+		}
+	}
+	
 	public void driverConnection() {
 		try{
 			this._connection = DriverManager.getConnection( this._url, this._user, this._pwd);	
@@ -129,34 +139,36 @@ public class ConnectionDB {
 	}
 	
 	public void completeRequest(@SuppressWarnings("rawtypes") ArrayList<Parameter> list) {
-		for(int i = 0; i < list.size(); i++) {
-			try {
-				if(list.get(i).getType() == "int") {
-					this._statement.setInt(i, (int)list.get(i).get());
-					
-				}else if(list.get(i).getType() == "String") {
-					this._statement.setString(i, (String)list.get(i).get());
-					
-				}else if(list.get(i).getType() == "float") {
-					this._statement.setFloat(i, (float)list.get(i).get());
-					
-				}else if(list.get(i).getType() == "double") {
-					this._statement.setDouble(i, (double)list.get(i).get());
-					
-				}else if(list.get(i).getType() == "long") {
-					this._statement.setLong(i, (long)list.get(i).get());
-					
-				}else if(list.get(i).getType() == "Date") {
-					this._statement.setDate(i, (java.sql.Date)list.get(i).get());
-					
-				}else {
-					System.out.println("Erreur type de données inconnu");
-					return;
-				}
-			
-			}catch(SQLException e) {
-				e.printStackTrace();
+		if(list != null) {
+			for(int i = 0; i < list.size(); i++) {
+				try {
+					if(list.get(i).getType() == "int") {
+						this._statement.setInt(i, (int)list.get(i).get());
+						
+					}else if(list.get(i).getType() == "String") {
+						this._statement.setString(i, (String)list.get(i).get());
+						
+					}else if(list.get(i).getType() == "float") {
+						this._statement.setFloat(i, (float)list.get(i).get());
+						
+					}else if(list.get(i).getType() == "double") {
+						this._statement.setDouble(i, (double)list.get(i).get());
+						
+					}else if(list.get(i).getType() == "long") {
+						this._statement.setLong(i, (long)list.get(i).get());
+						
+					}else if(list.get(i).getType() == "Date") {
+						this._statement.setDate(i, (Date)list.get(i).get());
+						
+					}else {
+						System.out.println("Erreur type de données inconnu");
+						return;
+					}
 				
+				}catch(SQLException e) {
+					e.printStackTrace();
+					
+				}
 			}
 		}
 	}
@@ -245,5 +257,13 @@ public class ConnectionDB {
 		this.prepareRequest(sql);
 		this.completeRequest(list);
 		return this.returnExecute();
+		// Ne pas oublier de clear 
 	}
+
+	@Override
+	public String toString() {
+		return "ConnectionDB [_url=" + this._url + ", _user=" + this._user + ", _pwd=" + this._pwd + ", _request=" + this._request
+				+ ", _connection=" + this._connection + ", _statement=" + this._statement + ", _result=" + this._result + "]";
+	}
+	
 }

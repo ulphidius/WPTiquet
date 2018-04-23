@@ -3,7 +3,7 @@ package ovh.workparadise.button;
 import java.awt.Color;
 import java.awt.event.MouseEvent;
 
-import ovh.workparadise.classedb.User;
+import ovh.workparadise.utils.User;
 
 public class ConnectionButton extends SkeletonButton{
 	private User _user;
