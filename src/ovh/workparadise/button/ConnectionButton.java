@@ -15,10 +15,8 @@ public class ConnectionButton extends SkeletonButton{
 	}
 	
 	@Override
-	public void mousePressed(MouseEvent e) {
-		this.setForeground(Color.BLACK);
-		// TODO a if statement who check the input date + load the new panel
-		
+	public void mouseClicked(MouseEvent e) {
+		// TODO Auto-generated method stub
 		
 	}
 }

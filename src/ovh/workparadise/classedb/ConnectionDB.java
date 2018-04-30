@@ -18,32 +18,21 @@ public class ConnectionDB {
 	private PreparedStatement _statement = null;
 	private ResultSet _result = null;
 	
-	public ConnectionDB(String dbName) {
-		this._url = "jdbc:mysql://localhost:3306/" + dbName + "?verifyServerCertificate=false&useSSL=true&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
+	private static ConnectionDB SINGLETON = null;
+	
+	private ConnectionDB(String url) {
+		this._url = url;
 		this._user = "test";
 		this._pwd = "test";
 	}
 	
-	public ConnectionDB(String dbName, String type) {
-		this(dbName);
-		this._url = "jdbc:" + type + "://localhost:3306/" + dbName + "?verifyServerCertificate=false&useSSL=true&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
+	public static ConnectionDB getInstance(String url) {
+		if(SINGLETON == null) {
+			SINGLETON = new ConnectionDB(url);
+		}
+		return SINGLETON;
 	}
-	
-	public ConnectionDB(String dbName, String type, String ip) {
-		this(dbName, type);
-		this._url = "jdbc:" + type + "://" + ip + ":3306/" + dbName + "?verifyServerCertificate=false&useSSL=true&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
-	}
-	
-	public ConnectionDB(String dbName, String type, String ip, String number) {
-		this(dbName, type, ip);
-		this._url = "jdbc:" + type + "://" + ip + ":" + number + "/" + dbName + "?verifyServerCertificate=false&useSSL=true&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
-	}
-	
-	public ConnectionDB(String dbName, String type, String ip, String number, String user, String pwd) {
-		this(dbName, type, ip, number);
-		this._user = user;
-		this._pwd = pwd;
-	}
+
 
 	// Getter
 	

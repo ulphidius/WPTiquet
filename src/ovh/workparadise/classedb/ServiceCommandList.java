@@ -4,6 +4,7 @@ public class ServiceCommandList {
 	private int _id;
 	private int _idService;
 	private int _quantity;
+	private final int number = 3;
 	
 	public ServiceCommandList(int id, int idService, int quantity) {
 		this._id = id;
@@ -11,7 +12,7 @@ public class ServiceCommandList {
 		this._quantity = quantity;
 	}
 
-	public int geId() {
+	public int getId() {
 		return this._id;
 	}
 
@@ -33,6 +34,10 @@ public class ServiceCommandList {
 
 	public void setQuantity(int _quantity) {
 		this._quantity = _quantity;
+	}
+	
+	public int getNumber() {
+		return this.number;
 	}
 	
 }

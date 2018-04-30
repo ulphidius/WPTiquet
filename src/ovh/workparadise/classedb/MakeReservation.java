@@ -1,22 +1,23 @@
 package ovh.workparadise.classedb;
 
 public class MakeReservation {
-	    private int id;
+	    private int idUser;
 	    private int idReservation;
 	    private String status;
+	    private final int number = 3;
 	    
 	    public MakeReservation(int id, int idReservation, String status){
-	        this.id = id;
+	        this.idUser = id;
 	        this.idReservation = idReservation;
 	        this.status = status;
 	    }
 
-		public int getId() {
-			return this.id;
+		public int getIdUser() {
+			return this.idUser;
 		}
 
-		public void setId(int id) {
-			this.id = id;
+		public void setIdUser(int id) {
+			this.idUser = id;
 		}
 
 		public int getIdReservation() {
@@ -33,6 +34,10 @@ public class MakeReservation {
 
 		public void setStatus(String status) {
 			this.status = status;
+		}
+		
+		public int getNumber() {
+			return this.number;
 		}
 
 	    

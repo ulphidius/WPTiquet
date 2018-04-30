@@ -8,6 +8,7 @@ public class SubUser {
 	private boolean _engaged;
 	private Date _dateStart;
 	private Date _dateEnd;
+	private final int number = 5;
 	
 	public SubUser(int idUser, int idSub, boolean engaged, Date dateStart, Date dateEnd) {
 		this._idUser = idUser;
@@ -33,7 +34,7 @@ public class SubUser {
 		this._idSub = _idSub;
 	}
 
-	public boolean is_engaged() {
+	public boolean get_engaged() {
 		return this._engaged;
 	}
 
@@ -55,6 +56,10 @@ public class SubUser {
 
 	public void set_dateEnd(Date _dateEnd) {
 		this._dateEnd = _dateEnd;
+	}
+	
+	public int getNumber() {
+		return this.number;
 	}
 	
 	

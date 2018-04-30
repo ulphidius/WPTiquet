@@ -7,6 +7,7 @@ public class ServiceCommand {
 	    private float price;
 	    private int quantity;
 	    private int site;
+	    private final int number = 6;
 
 	    public ServiceCommand(int id, String serviceType, String information, float price, int quantity, int site){
 	        this.id = id;
@@ -63,6 +64,10 @@ public class ServiceCommand {
 
 		public void setSite(int site) {
 			this.site = site;
+		}
+		
+		public int getNumber() {
+			return this.number;
 		}
 	    
 	    

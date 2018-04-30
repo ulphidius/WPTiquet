@@ -10,6 +10,7 @@ public class User {
 	private String _secret;
 	private boolean _status;
 	private boolean _admin;
+	private final int number = 9;
 	
 	public User(int id, String firstname, String lastname, String email, String phoneN, String pwd, String secret, boolean status, boolean admin) {
 		this._id = id;
@@ -93,6 +94,10 @@ public class User {
 
 	public void setAdmin(boolean _admin) {
 		this._admin = _admin;
+	}
+	
+	public int getNumber() {
+		return this.number;
 	}
 
 	@Override

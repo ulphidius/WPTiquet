@@ -7,6 +7,7 @@ public class Room {
 	    private String description;
 	    private int roomNumber;
 	    private String roomStatus;
+	    private final int number = 6;
 
 	    public Room(int id, int site, String type, String description, int roomNumber, String roomStatus){
 	        this.id = id;
@@ -65,5 +66,7 @@ public class Room {
 			this.roomStatus = roomStatus;
 		}
 	    
-	    
+	    public int getNumber() {
+	    	return this.number;
+	    }
 }

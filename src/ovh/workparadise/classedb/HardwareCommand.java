@@ -8,6 +8,7 @@ public class HardwareCommand {
     private String status;
     private float price;
     private int site;
+    private final int number = 7;
 
     public HardwareCommand(int id, String matricule, String hardwareType, String information, String status, float price, int site){
         this.id = id;
@@ -73,5 +74,9 @@ public class HardwareCommand {
 
 	public void setSite(int site) {
 		this.site = site;
+	}
+	
+	public int getNumber() {
+		return this.number;
 	}
 }

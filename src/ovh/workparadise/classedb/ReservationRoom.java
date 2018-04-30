@@ -11,7 +11,8 @@ public class ReservationRoom {
 	    private Time dateEnd;
 	    private String originalState;
 	    private String afterState;
-
+	    private final int number = 7;
+	    
 	    public ReservationRoom(int id, int idRoom, Date dateR, Time dateStart, Time dateEnd, String originalState, String afterState){
 	        this.id = id;
 	        this.idRoom = idRoom;
@@ -76,6 +77,10 @@ public class ReservationRoom {
 
 		public void setAfterState(String afterState) {
 			this.afterState = afterState;
+		}
+		
+		public int getNumber() {
+			return this.number;
 		}
 	    
 }

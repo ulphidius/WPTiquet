@@ -11,6 +11,7 @@ public class Site {
 	private Time _openHourFriday;
 	private Time _openHourWeekend;
 	private Time _endHourWeekend;
+	private final int number = 8;
 	
 	public Site(int id, String name, String address, Time openHourWeek, Time endHourWeek, Time openHourFriday, Time openHourWeekend, 
 			Time endHourWeekend) {
@@ -86,6 +87,10 @@ public class Site {
 
 	public void set_endHourWeekend(Time _endHourWeekend) {
 		this._endHourWeekend = _endHourWeekend;
+	}
+	
+	public int getNumber() {
+		return this.number;
 	}
 	
 }

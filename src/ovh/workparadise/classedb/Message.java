@@ -4,6 +4,7 @@ public class Message {
 	    private int id;
 	    private String email;
 	    private String message;
+	    private final int number = 3;
 
 	    public Message(int id, String email, String message){
 	        this.id = id;
@@ -35,5 +36,8 @@ public class Message {
 			this.message = message;
 		}
 	    
+		public int getNumber() {
+			return this.number;
+		}
 	    
 }

@@ -12,28 +12,29 @@ import ovh.workparadise.classedb.UserManager;
 import ovh.workparadise.excel.ProcessExport;
 import ovh.workparadise.panel.ConnectionPanel;
 import ovh.workparadise.panel.MenuPanel;
+import ovh.workparadise.utils.Configuration;
 
 public class Main {
 	public static void main(String[] args) {
 		TimeZone timeZone = TimeZone.getTimeZone("Europe/Paris");
 		TimeZone.setDefault(timeZone);
+
+		Configuration.getInstance().configurationFileExist();
+		Configuration.getInstance().readFile();
+		System.out.println(Configuration.getInstance().generateUrl());
 		
-		ConnectionDB connect = new ConnectionDB("WORKPARADISE");
-		connect.driverLoad("com.mysql.cj.jdbc.Driver");
-		
+		ConnectionDB.getInstance(Configuration.getInstance().generateUrl());
+		ConnectionDB.getInstance(Configuration.getInstance().generateUrl()).driverLoad(Configuration.getInstance().getDriver());
 		UserManager man = new UserManager();
-		ArrayList<User> list = man.loadAllUser(connect);
-		for(int i = 0; i < list.size(); i++) {
-			System.out.println(list.get(i));
-		}
-		ProcessExport excel = new ProcessExport("exportExcel2.xlsx");
-		excel.createSheet("feuille 1");
-		excel.generateCellNum("feuille 1", 10, 1, 0);
-		excel.generateCellString("feuille 1", "La chance", 2, 0);
 		
-		/*JFrame frame = new JFrame();
+		//ProcessExport excel = new ProcessExport("exportExcel2.xlsx");
+		//excel.exportExcel(connect);
+		
+
+		/*
+		JFrame frame = new JFrame();
 		frame.setSize(1080, 720);
-		frame.setMinimumSize(new Dimension(500, 500));
+		frame.setMinimumSize(new Dimension(1080, 720));
 		frame.setMaximumSize(new Dimension(1900, 1080));
 		frame.setTitle("Connexion");
 		frame.setLocationRelativeTo(null);

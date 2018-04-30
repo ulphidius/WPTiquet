@@ -6,6 +6,7 @@ public class HardwareCommandList {
 	    private int idHardware;
 	    private String originalState;
 	    private String afterState;
+	    private final int number = 5;
 
 	    public HardwareCommandList(int id, int idReservation, int idHardware, String originalState, String afterState){
 	        this.id = id;
@@ -53,6 +54,10 @@ public class HardwareCommandList {
 
 		public void setAfterState(String afterState) {
 			this.afterState = afterState;
+		}
+		
+		public int getNumber() {
+			return this.number;
 		}
 	    
 }

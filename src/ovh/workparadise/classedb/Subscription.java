@@ -10,6 +10,7 @@ public class Subscription {
 	private float _engagementRate;
 	private float _notEngagementRate;
 	private int _engagementTime;
+	private final int number = 9;
 	
 	public Subscription(int id, String name, String description, 
 			float hourRate, float dayRate, float studentRate, float engagementRate, float notEngagementRate, 
@@ -95,6 +96,10 @@ public class Subscription {
 
 	public void set_engagementTime(int _engagementTime) {
 		this._engagementTime = _engagementTime;
+	}
+	
+	public int getNumber() {
+		return this.number;
 	}
 	
 	

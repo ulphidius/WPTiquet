@@ -4,21 +4,22 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class MakeReservationManager {
+public class MessageManager {
 	private ResultSet result;
 	
-	public ArrayList<MakeReservation> loadAllUser(ConnectionDB connect) {
+	public ArrayList<Message> loadAllUser(ConnectionDB connect) {
 		
-		String sql = "SELECT * FROM makereservation";
+		String sql = "SELECT * FROM message";
 		
 		this.result = connect.getData(sql, null);
-		ArrayList<MakeReservation> list = new ArrayList<MakeReservation>();
-		MakeReservation user = null;
+		ArrayList<Message> list = new ArrayList<Message>();
+		Message user = null;
 		try {
 			while(this.result.next()) {
-				user = new MakeReservation(this.result.getInt("idUser"),
-						this.result.getInt("idReservation"),
-						this.result.getString("status"));
+				user = new Message(this.result.getInt("id"),
+						this.result.getString("email"),
+						this.result.getString("message")
+						);
 				list.add(user);
 				
 			}

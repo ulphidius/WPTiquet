@@ -12,7 +12,7 @@ public class MenuPanel extends JPanel{
 	
 	private static final long serialVersionUID = -3317870245421530323L;
 	
-	private static final int size = 70;
+	private static final int size = 50;
 	
 	public MenuPanel() {
 		this.setLayout(new BorderLayout());
