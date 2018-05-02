@@ -4,6 +4,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
+
 public class SubUserManager {
 	private ResultSet result;
 	
@@ -26,6 +28,7 @@ public class SubUserManager {
 			}
 		
 		} catch (SQLException e) {
+			JOptionPane.showMessageDialog(null, "Une erreur SQL c'est produite", "Erreur", JOptionPane.ERROR_MESSAGE);
 			e.printStackTrace();
 		
 		}finally {

@@ -16,31 +16,22 @@ import ovh.workparadise.utils.Configuration;
 
 public class Main {
 	public static void main(String[] args) {
-		TimeZone timeZone = TimeZone.getTimeZone("Europe/Paris");
-		TimeZone.setDefault(timeZone);
-
+		
 		Configuration.getInstance().configurationFileExist();
 		Configuration.getInstance().readFile();
-		System.out.println(Configuration.getInstance().generateUrl());
 		
 		ConnectionDB.getInstance(Configuration.getInstance().generateUrl());
 		ConnectionDB.getInstance(Configuration.getInstance().generateUrl()).driverLoad(Configuration.getInstance().getDriver());
-		UserManager man = new UserManager();
-		
-		//ProcessExport excel = new ProcessExport("exportExcel2.xlsx");
-		//excel.exportExcel(connect);
-		
-
 		
 		JFrame frame = new JFrame();
 		frame.setSize(1080, 720);
 		frame.setMinimumSize(new Dimension(1080, 720));
 		frame.setMaximumSize(new Dimension(1900, 1080));
-		frame.setTitle("Connexion");
+		frame.setTitle("Workparadise");
 		frame.setLocationRelativeTo(null);
 		
-		ConnectionPanel content = new ConnectionPanel();
-		//MenuPanel content = new MenuPanel();
+		ConnectionPanel content = new ConnectionPanel(frame);
+		
 		frame.setContentPane(content);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);

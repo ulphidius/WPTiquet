@@ -8,6 +8,8 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.util.Properties;
 
+import javax.swing.JOptionPane;
+
 public class Configuration {
 	private String dbname;
 	private String type;
@@ -123,12 +125,15 @@ public class Configuration {
 			out = new FileOutputStream(this.file);
 			props.store(out, "C'est un fichier de configuration il est preferable de ne pas le supprimer ou l'editer manuellement");
 		}catch(Exception e) {
+			JOptionPane.showMessageDialog(null, "L'écriture des données de configuration a rencontré un problème", "Erreur", JOptionPane.ERROR_MESSAGE);
 			e.printStackTrace();
+			
 		}finally {
 			if(out != null) {
 				try {
 					out.close();
 				} catch (IOException e) {
+					JOptionPane.showMessageDialog(null, "La fermuture du flux a rentré un problème", "Erreur", JOptionPane.ERROR_MESSAGE);
 					e.printStackTrace();
 				}
 			}
@@ -180,9 +185,11 @@ public class Configuration {
 			this.password = props.getProperty("password");
 			this.driver = props.getProperty("driver");
 		} catch (FileNotFoundException e) {
+			JOptionPane.showMessageDialog(null, "Le fichier de configuration n'a pas été trouvé", "Erreur", JOptionPane.ERROR_MESSAGE);
 			e.printStackTrace();
 			
 		} catch (IOException e) {
+			JOptionPane.showMessageDialog(null, "La lecture des propriétés a échoué", "Erreur", JOptionPane.ERROR_MESSAGE);
 			e.printStackTrace();
 		
 		}finally {
@@ -191,6 +198,7 @@ public class Configuration {
 					input.close();
 				
 				} catch (IOException e) {
+					JOptionPane.showMessageDialog(null, "La fermeture du flux a échoué", "Erreur", JOptionPane.ERROR_MESSAGE);
 					e.printStackTrace();
 				
 				}				
@@ -221,6 +229,7 @@ public class Configuration {
 				props.store(out, "C'est un fichier de configuration il est preferable de ne pas le supprimer ou l'editer manuellement");
 				
 			} catch (IOException e) {
+				JOptionPane.showMessageDialog(null, "La création du fichier de configuration a échoué", "Erreur", JOptionPane.ERROR_MESSAGE);
 				e.printStackTrace();
 			
 			}finally {
@@ -228,6 +237,7 @@ public class Configuration {
 					try {
 						out.close();
 					} catch (IOException e) {
+						JOptionPane.showMessageDialog(null, "La fermuture du flux a échoué", "Erreur", JOptionPane.ERROR_MESSAGE);
 						e.printStackTrace();
 					}
 				}

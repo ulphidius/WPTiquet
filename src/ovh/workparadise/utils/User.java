@@ -48,7 +48,7 @@ public class User {
 	
 	@Override
 	public String toString() {
-		return "User [_email=" + this.email + ", _pwd=" + this.pwd + "]";
+		return "User [_email=" + this.email + ", _pwd=" + this.pwd + ", admin=" + this.admin + "]";
 	}
 	
 }

@@ -4,6 +4,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
+
 public class SiteManager {
 	private ResultSet result;
 	
@@ -29,6 +31,7 @@ public class SiteManager {
 			}
 		
 		} catch (SQLException e) {
+			JOptionPane.showMessageDialog(null, "Une erreur SQL c'est produite", "Erreur", JOptionPane.ERROR_MESSAGE);
 			e.printStackTrace();
 		
 		}finally {

@@ -6,7 +6,9 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
@@ -23,8 +25,10 @@ public class ConnectionPanel extends JPanel{
 	
 	private JTextField email = null;
 	private JPasswordField pwd = null;
+	private JFrame frame;
 	
-	public ConnectionPanel() {
+	public ConnectionPanel(JFrame frame) {
+		this.frame = frame;
 		this.setLayout(new BorderLayout());
 		JPanel panel = new JPanel();
 		panel.setLayout(new GridLayout(15, 15));
@@ -57,9 +61,17 @@ public class ConnectionPanel extends JPanel{
 	class ButtonListener1 implements ActionListener{
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			User user = new User(email.getText(), pwd.getPassword());
+			User user = new User(email.getText(), new String(pwd.getPassword()));
 			UserManager manager = new UserManager(user);
-			// TODO password char [] into String and check UserManager
+			
+			if(manager.checkAccount() == true) {
+				frame.getContentPane().removeAll();
+				frame.setContentPane(new MenuPanel());
+				frame.revalidate();
+				frame.repaint();
+			}else {
+				JOptionPane.showMessageDialog(null, "Vos données d'entrées sont invalides", "Erreur", JOptionPane.ERROR_MESSAGE);
+			}
 			
 		}
 		

@@ -8,6 +8,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
+
 
 public class ConnectionDB {
 	private String _url;
@@ -111,6 +113,7 @@ public class ConnectionDB {
 			this._connection = DriverManager.getConnection( this._url, this._user, this._pwd);	
 		
 		}catch(SQLException e) {
+			JOptionPane.showMessageDialog(null, "Une erreur au chargement du driver c'est produite", "Erreur", JOptionPane.ERROR_MESSAGE);
 			e.printStackTrace();
 		
 		}
@@ -122,6 +125,7 @@ public class ConnectionDB {
 			this._statement = this._connection.prepareStatement(sqlLine);
 		
 		} catch (SQLException e) {
+			JOptionPane.showMessageDialog(null, "Une erreur à la préparation de la requête c'est produite", "Erreur", JOptionPane.ERROR_MESSAGE);
 			e.printStackTrace();
 			
 		}
@@ -135,22 +139,22 @@ public class ConnectionDB {
 						this._statement.setInt(i, (int)list.get(i).get());
 						
 					}else if(list.get(i).getType() == "String") {
-						this._statement.setString(i, (String)list.get(i).get());
+						this._statement.setString(i + 1, (String)list.get(i).get());
 						
 					}else if(list.get(i).getType() == "float") {
-						this._statement.setFloat(i, (float)list.get(i).get());
+						this._statement.setFloat(i + 1, (float)list.get(i).get());
 						
 					}else if(list.get(i).getType() == "double") {
-						this._statement.setDouble(i, (double)list.get(i).get());
+						this._statement.setDouble(i + 1, (double)list.get(i).get());
 						
 					}else if(list.get(i).getType() == "long") {
-						this._statement.setLong(i, (long)list.get(i).get());
+						this._statement.setLong(i + 1, (long)list.get(i).get());
 						
 					}else if(list.get(i).getType() == "Date") {
-						this._statement.setDate(i, (Date)list.get(i).get());
+						this._statement.setDate(i + 1, (Date)list.get(i).get());
 						
 					}else if(list.get(i).getType() == "boolean"){
-						this._statement.setBoolean(i, (boolean)list.get(i).get());
+						this._statement.setBoolean(i + 1, (boolean)list.get(i).get());
 						
 					}else {
 						System.out.println("Erreur type de données inconnu");
@@ -158,6 +162,7 @@ public class ConnectionDB {
 					}
 				
 				}catch(SQLException e) {
+					JOptionPane.showMessageDialog(null, "Une erreur SQL c'est produite", "Erreur", JOptionPane.ERROR_MESSAGE);
 					e.printStackTrace();
 					
 				}
@@ -170,6 +175,7 @@ public class ConnectionDB {
 			this._result = this._statement.executeQuery();
 		
 		}catch(SQLException e) {
+			JOptionPane.showMessageDialog(null, "Une erreur SQL à l'exécution de la requête c'est produite", "Erreur", JOptionPane.ERROR_MESSAGE);
 			e.printStackTrace();
 			
 		}
@@ -182,6 +188,7 @@ public class ConnectionDB {
 			this._statement.executeUpdate();
 			
 		}catch(SQLException e) {
+			JOptionPane.showMessageDialog(null, "Une erreur SQL à l'exécution de la requête c'est produite", "Erreur", JOptionPane.ERROR_MESSAGE);
 			e.printStackTrace();
 			
 		}
@@ -203,6 +210,7 @@ public class ConnectionDB {
 			}
 			
 		}catch(Exception e) {
+			JOptionPane.showMessageDialog(null, "Une erreur au nettoyage des éléments de la requête SQL", "Erreur", JOptionPane.ERROR_MESSAGE);
 			e.printStackTrace();
 			
 		}		
@@ -217,6 +225,7 @@ public class ConnectionDB {
 			
 			
 		}catch(Exception e) {
+			JOptionPane.showMessageDialog(null, "Une erreur au nettoyage des éléments de la requête SQL", "Erreur", JOptionPane.ERROR_MESSAGE);
 			e.printStackTrace();
 			
 		}		
@@ -230,6 +239,7 @@ public class ConnectionDB {
 			}
 			
 		}catch(Exception e) {
+			JOptionPane.showMessageDialog(null, "Une erreur au nettoyage des éléments de la requête SQL", "Erreur", JOptionPane.ERROR_MESSAGE);
 			e.printStackTrace();
 			
 		}		

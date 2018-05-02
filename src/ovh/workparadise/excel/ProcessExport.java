@@ -5,6 +5,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
+
 import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFCellStyle;
 import org.apache.poi.hssf.usermodel.HSSFFont;
@@ -54,9 +56,11 @@ public class ProcessExport {
 		      fileOut.close();
 		    
 		}catch (FileNotFoundException e) {
+			JOptionPane.showMessageDialog(null, "L'ouverture du flux a échoué", "Erreur", JOptionPane.ERROR_MESSAGE);
 		    e.printStackTrace();
 		    
 		}catch (IOException e) {
+			JOptionPane.showMessageDialog(null, "La fermeture du flux a échoué", "Erreur", JOptionPane.ERROR_MESSAGE);
 			e.printStackTrace();
 		   
 		}
@@ -70,8 +74,10 @@ public class ProcessExport {
 	      	wb.write(fileOut);
 	      fileOut.close();  
 	    } catch (FileNotFoundException e) {
+	    	JOptionPane.showMessageDialog(null, "L'ouverture du flux a échoué", "Erreur", JOptionPane.ERROR_MESSAGE);
 	    	e.printStackTrace();
 	    } catch (IOException e) {
+	    	JOptionPane.showMessageDialog(null, "La fermeture du flux a échoué", "Erreur", JOptionPane.ERROR_MESSAGE);
 	    	e.printStackTrace();
 	    }
 	}	
@@ -96,9 +102,11 @@ public class ProcessExport {
 	      wb.write(fileOut);
 	      fileOut.close();  
 	    } catch (FileNotFoundException e) {
-	      e.printStackTrace();
+	    	JOptionPane.showMessageDialog(null, "L'ouverture du flux a échoué", "Erreur", JOptionPane.ERROR_MESSAGE);
+	    	e.printStackTrace();
 	    } catch (IOException e) {
-	      e.printStackTrace();
+	    	JOptionPane.showMessageDialog(null, "La fermeture du flux a échoué", "Erreur", JOptionPane.ERROR_MESSAGE);
+	    	e.printStackTrace();
 	    }
 	}
 	
@@ -123,8 +131,10 @@ public class ProcessExport {
 		      wb.write(fileOut);
 		      fileOut.close();  
 		    } catch (FileNotFoundException e) {
+		    	JOptionPane.showMessageDialog(null, "L'ouverture du flux a échoué", "Erreur", JOptionPane.ERROR_MESSAGE);
 		    	e.printStackTrace();
 		    } catch (IOException e) {
+		    	JOptionPane.showMessageDialog(null, "La fermeture du flux a échoué", "Erreur", JOptionPane.ERROR_MESSAGE);
 		    	e.printStackTrace();
 		    }
 	}
