@@ -31,7 +31,7 @@ public class Main {
 		//excel.exportExcel(connect);
 		
 
-		/*
+		
 		JFrame frame = new JFrame();
 		frame.setSize(1080, 720);
 		frame.setMinimumSize(new Dimension(1080, 720));
@@ -39,12 +39,12 @@ public class Main {
 		frame.setTitle("Connexion");
 		frame.setLocationRelativeTo(null);
 		
-		//ConnectionPanel content = new ConnectionPanel();
-		MenuPanel content = new MenuPanel();
+		ConnectionPanel content = new ConnectionPanel();
+		//MenuPanel content = new MenuPanel();
 		frame.setContentPane(content);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
-		*/
+		
 		return;
 	}
 }

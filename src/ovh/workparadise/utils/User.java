@@ -1,33 +1,54 @@
 package ovh.workparadise.utils;
 
 public class User {
-	private String _email;
-	private String _pwd;
+	private String email;
+	private String pwd;
+	private boolean admin;
 	
+	public User() {
+		this.email = null;
+		this.pwd = null;
+		this.admin = false;
+	}
 	public User(String email, String pwd) {
-		this._email = email;
-		this._pwd = pwd;
-	}
-
-	public String get_email() {
-		return this._email;
-	}
-
-	public String get_pwd() {
-		return this._pwd;
+		this.email = email;
+		this.pwd = pwd;
+		this.admin = false;
 	}
 	
-	public void set_email(String _email) {
-		this._email = _email;
+	public User(String email, String pwd, Boolean admin) {
+		this(email, pwd);
+		this.admin = admin;
 	}
 	
-	public void set_pwd(String _pwd) {
-		this._pwd = _pwd;
+
+	public String getEmail() {
+		return this.email;
+	}
+
+	public String getPwd() {
+		return this.pwd;
+	}
+	
+	public Boolean getAdmin() {
+		return this.admin;
+	}
+	
+	public void setEmail(String _email) {
+		this.email = _email;
+	}
+	
+	public void setPwd(String _pwd) {
+		this.pwd = _pwd;
+	}
+	
+	public void setAdmin(Boolean admin) {
+		this.admin = admin;
 	}
 	
 	@Override
 	public String toString() {
-		return "User [_email=" + this._email + ", _pwd=" + this._pwd + "]";
+		return "User [_email=" + this.email + ", _pwd=" + this.pwd + "]";
 	}
 	
 }

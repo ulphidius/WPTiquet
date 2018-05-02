@@ -1,6 +1,8 @@
 package ovh.workparadise.panel;
 
 import java.awt.Dimension;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -18,27 +20,35 @@ public class ExcelPanel extends JPanel{
 
 	private static final long serialVersionUID = 2539420442258270353L;
 	
+	JTextField field = null;
 	public ExcelPanel() {
-		this.setLayout(new GridLayout(15, 15));
+		this.setLayout(new GridBagLayout());
+		GridBagConstraints gbl = new GridBagConstraints();
 		
-		JTextField field = new JTextField("Entrez le nom du fichier");
+		
+		field = new JTextField("Entrez le nom du fichier");
 		field.setPreferredSize(new Dimension(150, 25));
 		 
-		//ButtonListener
+		SkeletonButton button = new SkeletonButton("Export Data Base");
+		button.addActionListener(new ButtonListener1());
+		
+		gbl.gridx = 0;
+		gbl.gridy = 0;
+		gbl.gridheight = 1;
+		gbl.gridwidth = GridBagConstraints.REMAINDER;
+		
+		this.add(this.field, gbl);
+		gbl.gridx = 0;
+		gbl.gridy = 1;
+		this.add(button, gbl);
 		
 	}
 	
-	class ButtonListener1 extends SkeletonButton implements ActionListener{
+	class ButtonListener1 implements ActionListener{
 		
-		private String filename;
-		
-		public ButtonListener1(String name, String filename) {	
-			super(name);
-			this.filename = filename;
-		}
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
-			ProcessExport ex = new ProcessExport(this.filename);
+			ProcessExport ex = new ProcessExport((field.getText() == null) ? "ExportDataBase" : field.getText().trim());
 			ex.exportExcel(ConnectionDB.getInstance(Configuration.getInstance().generateUrl()));
 		}
 	}

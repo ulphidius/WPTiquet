@@ -32,6 +32,9 @@ public class Parameter<T> {
 		}else if(this._value instanceof Date) {
 			return "Date";
 			
+		}else if(this._value instanceof Boolean){
+			return "boolean";
+			
 		}else {
 			return null;
 		

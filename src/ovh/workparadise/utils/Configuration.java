@@ -242,6 +242,6 @@ public class Configuration {
 	
 	@ Override
 	public String toString() {
-		return "[dbaname="+this.dbname+", type="+this.type+", ip="+this.ip+", number="+this.number+", user="+this.user+", password="+this.password+", file="+this.file.getAbsolutePath()+"]";
+		return "[dbaname="+this.dbname+", type="+this.type+", ip="+this.ip+", number="+this.number+", user="+this.user+", password="+this.password+", driver="+this.driver+", file="+this.file.getAbsolutePath()+"]";
 	}
 }

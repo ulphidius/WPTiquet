@@ -45,7 +45,7 @@ public class ProcessExport {
 	private String filename;
 	
 	public ProcessExport(String name) {
-		this.filename = "Excel/" + name;
+		this.filename = "Excel/" + name + ".xlsx";
 		this.wb = new HSSFWorkbook();
 		FileOutputStream fileOut;
 		try {

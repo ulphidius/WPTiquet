@@ -1,0 +1,9 @@
+#C'est un fichier de configuration il est preferable de ne pas le supprimer ou l'editer manuellement
+#Tue May 01 18:08:11 CEST 2018
+user=test
+password=test
+type=mysql
+number=3306
+driver=com.mysql.cj.jdbc.Driver
+ip=localhost
+dbname=WORKPARADISE

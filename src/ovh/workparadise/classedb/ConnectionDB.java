@@ -149,6 +149,9 @@ public class ConnectionDB {
 					}else if(list.get(i).getType() == "Date") {
 						this._statement.setDate(i, (Date)list.get(i).get());
 						
+					}else if(list.get(i).getType() == "boolean"){
+						this._statement.setBoolean(i, (boolean)list.get(i).get());
+						
 					}else {
 						System.out.println("Erreur type de données inconnu");
 						return;
