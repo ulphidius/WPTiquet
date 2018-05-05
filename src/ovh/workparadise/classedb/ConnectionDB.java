@@ -28,6 +28,12 @@ public class ConnectionDB {
 		this._pwd = "test";
 	}
 	
+	/**
+	 * Prend en donnée un String qui est l'url avec les données de connexion de la base de donnée
+	 * Si non crée il le fait sinon return la connexion déjà instancié
+	 * @param url
+	 * @return
+	 */
 	public static ConnectionDB getInstance(String url) {
 		if(SINGLETON == null) {
 			SINGLETON = new ConnectionDB(url);
@@ -98,6 +104,10 @@ public class ConnectionDB {
 	
 	// Méthode
 	
+	/**
+	 * Chargement du driver de la base de donnée
+	 * @param driver
+	 */
 	public void driverLoad(String driver) {
 		try {
 			Class.forName(driver);
@@ -108,6 +118,9 @@ public class ConnectionDB {
 		}
 	}
 	
+	/**
+	 * Lancement de la connexion avec la base
+	 */
 	public void driverConnection() {
 		try{
 			this._connection = DriverManager.getConnection( this._url, this._user, this._pwd);	
@@ -120,6 +133,11 @@ public class ConnectionDB {
 		
 	}
 	
+	/**
+	 * Préparation d'une requête
+	 * Prend en donnée une requête SQL sous forme d'un String
+	 * @param sqlLine
+	 */
 	public void prepareRequest(String sqlLine) {
 		try {
 			this._statement = this._connection.prepareStatement(sqlLine);
@@ -131,6 +149,11 @@ public class ConnectionDB {
 		}
 	}
 	
+	/**
+	 * Complète les "?" d'une requête
+	 * Envoie en donnée d'une ArrayList avec les données manquantes
+	 * @param list
+	 */
 	public void completeRequest(@SuppressWarnings("rawtypes") ArrayList<Parameter> list) {
 		if(list != null) {
 			for(int i = 0; i < list.size(); i++) {
@@ -170,6 +193,11 @@ public class ConnectionDB {
 		}
 	}
 	
+	/**
+	 * Exécute après préparation d'une requête avec un retourn de données 
+	 * Retourne un ResultSet
+	 * @return
+	 */
 	public ResultSet returnExecute() {
 		try {
 			this._result = this._statement.executeQuery();
@@ -183,6 +211,9 @@ public class ConnectionDB {
 		
 	}
 	
+	/**
+	 * Exécute après préparation d'une requête sans retour de données
+	 */
 	public void noReturnExecute() {
 		try {
 			this._statement.executeUpdate();
@@ -195,6 +226,9 @@ public class ConnectionDB {
 		
 	}
 	
+	/**
+	 * Clear de toute les données
+	 */
 	public void clearSql() {
 		this.clearConnection();
 		this.clearRequest();
@@ -202,6 +236,9 @@ public class ConnectionDB {
 		
 	}
 	
+	/**
+	 * Clear de la requête
+	 */
 	public void clearRequest() {
 		try {
 			if(this._statement != null) {
@@ -216,6 +253,9 @@ public class ConnectionDB {
 		}		
 	}
 	
+	/**
+	 * Clear de la connexion
+	 */
 	public void clearConnection() {
 		try {
 			if(this._connection != null) {
@@ -231,6 +271,9 @@ public class ConnectionDB {
 		}		
 	}
 	
+	/**
+	 * Vider le ResultSet
+	 */
 	public void clearResult() {
 		try {
 			if(this._result != null) {
@@ -245,6 +288,13 @@ public class ConnectionDB {
 		}		
 	}
 	
+	/**
+	 * Pour les requêtes de modifiant la base
+	 * En paramètre la commande sql + la liste pour complèter les "?" si il y en a (dans le cas contraire envoyer null)
+	 * @param sql
+	 * @param list
+	 */
+	
 	public void updateData(String sql, @SuppressWarnings("rawtypes") ArrayList<Parameter> list) {
 		this.driverConnection();
 		this.prepareRequest(sql);
@@ -254,6 +304,14 @@ public class ConnectionDB {
 		
 	}
 	
+	/**
+	 * Pour les requêtes d'optention de données
+	 * En paramètre la commande sql + la liste pour complèter les "?" si il y en a (dans le cas contraire envoyer null)
+	 * Retourne un ResultSet avec les données de retour
+	 * @param sql
+	 * @param list
+	 * @return
+	 */
 	public ResultSet getData(String sql, @SuppressWarnings("rawtypes") ArrayList<Parameter> list) {
 		this.driverConnection();
 		this.prepareRequest(sql);

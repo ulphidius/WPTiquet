@@ -57,7 +57,7 @@ public class ConnectionPanel extends JPanel{
 		this.add(panel, BorderLayout.CENTER);
 		
 	}
-	
+	// Vérification de la validité du compte
 	class ButtonListener1 implements ActionListener{
 		@Override
 		public void actionPerformed(ActionEvent e) {

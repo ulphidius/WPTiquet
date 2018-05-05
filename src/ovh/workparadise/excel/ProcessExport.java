@@ -46,6 +46,10 @@ public class ProcessExport {
 	private HSSFRow row = null;
 	private String filename;
 	
+	/**
+	 * Envoie du nom du fichier pour la création.
+	 * @param name
+	 */
 	public ProcessExport(String name) {
 		this.filename = "Excel/" + name + ".xlsx";
 		this.wb = new HSSFWorkbook();
@@ -66,6 +70,10 @@ public class ProcessExport {
 		}
 	}
 	
+	/**
+	 * Création du feuille Excel au sein du classeur.
+	 * @param name
+	 */
 	public void createSheet(String name) {
 		this.sheet = this.wb.createSheet(name);
 	    FileOutputStream fileOut;
@@ -82,6 +90,12 @@ public class ProcessExport {
 	    }
 	}	
 	
+	/**
+	 * Génération d'une cellule numérique à partir d'une valeur, de ça position sur l'axe x et un boolean pour savoir si c'est une cellule titre. 
+	 * @param value
+	 * @param position
+	 * @param form
+	 */
 	public void generateCellNum(float value, int position, boolean form) {
 	    
 	    HSSFCell cell = this.row.createCell((short)position);
@@ -110,6 +124,12 @@ public class ProcessExport {
 	    }
 	}
 	
+	/**
+	 * Génération d'une cellule textuel à partir d'une valeur, de ça position sur l'axe x et un boolean pour savoir si c'est une cellule titre. 
+	 * @param value
+	 * @param position
+	 * @param form
+	 */	
 	public void generateCellString(String value, int position, boolean form) {
 		
 		HSSFCell cell = this.row.createCell((short)position);
@@ -139,6 +159,7 @@ public class ProcessExport {
 		    }
 	}
 	
+	// Les fonctions d'exportation des données sous forme Excel
 	public void exportUser(String name, ConnectionDB db) {
 		UserManager user = new UserManager();
 		ArrayList<User> list = user.loadAllUser(db);
@@ -380,6 +401,7 @@ public class ProcessExport {
 		}
 	}
 	
+	// Les fonctions d'exportation
 	public void exportExcel(ConnectionDB db) {
 		this.exportUser("User", db);
 		this.exportSubUser("Sub User", db);

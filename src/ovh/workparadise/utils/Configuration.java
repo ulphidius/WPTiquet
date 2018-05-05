@@ -110,6 +110,10 @@ public class Configuration {
 	}
 	
 	// Writer
+	/**
+	 * écriture des données dans le fichier conf.txt dans le dossier Configuration à la racine du projet.
+	 * Les données écrites sont les attributs de la classe 
+	 */
 	public void writeConf() {
 		Properties props = null;
 		OutputStream out = null;
@@ -170,6 +174,10 @@ public class Configuration {
 		this.driver = props.getProperty("driver");
 	}
 	
+	/**
+	 * Lecture des données du fichier conf.txt et chargement au sain de l'objet.
+	 * @return Properties
+	 */
 	public Properties readFile() {
 		Properties props = null;
 		FileInputStream input = null;
@@ -209,7 +217,10 @@ public class Configuration {
 	}
 	
 	// Vérification d'un fichier de configuration
-	
+	/**
+	 * Vérification de l'existance du fichier de configuration.
+	 * Dans le cas de la création set de valeur par defaut.
+	 */
 	public void configurationFileExist() {
 		this.file = new File("Configuration/conf.txt");
 		Properties props = null;
@@ -245,6 +256,10 @@ public class Configuration {
 		}
 	}
 	
+	/**
+	 * Génération de l'URL pour la connexion avec la base de donnée
+	 * @return String
+	 */
 	public String generateUrl() {
 		return "jdbc:" + this.type + "://" + this.ip + ":" + this.number + "/" + this.dbname + 
 				"?verifyServerCertificate=false&useSSL=true&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";

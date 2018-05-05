@@ -23,21 +23,17 @@ public class MenuPanel extends JPanel{
 		
 		JTabbedPane tabs = new JTabbedPane(JTabbedPane.LEFT);
 		TiquetPanel tiquet = new TiquetPanel();
-		EquipementPanel equipement = new EquipementPanel();
 		ExcelPanel excel = new ExcelPanel();
 		ConfigurationPanel conf = new ConfigurationPanel();
 		
 		tabs.addTab("Tiquet", tiquet);
 		tabs.setIconAt(0, new ImageIcon(new ImageIcon("Resources/ticket.png").getImage().getScaledInstance(size, size, Image.SCALE_DEFAULT)));
 		
-		tabs.addTab("Matériel", equipement);
-		tabs.setIconAt(1, new ImageIcon (new ImageIcon("Resources/equipements.png").getImage().getScaledInstance(size, size, Image.SCALE_DEFAULT)));
-				
 		tabs.addTab("Excel", excel);
-		tabs.setIconAt(2,  new ImageIcon(new ImageIcon("Resources/excel.png").getImage().getScaledInstance(size, size, Image.SCALE_DEFAULT)));
+		tabs.setIconAt(1,  new ImageIcon(new ImageIcon("Resources/excel.png").getImage().getScaledInstance(size, size, Image.SCALE_DEFAULT)));
 		
 		tabs.addTab("Configuration", conf);
-		tabs.setIconAt(3,  new ImageIcon(new ImageIcon("Resources/configuration.png").getImage().getScaledInstance(size, size, Image.SCALE_DEFAULT)));
+		tabs.setIconAt(2,  new ImageIcon(new ImageIcon("Resources/configuration.png").getImage().getScaledInstance(size, size, Image.SCALE_DEFAULT)));
 		content.add(tabs);
 		
 		this.add(content);

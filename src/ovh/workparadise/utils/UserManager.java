@@ -16,11 +16,19 @@ public class UserManager {
 	private User base;
 	private User user;
 	
+	/**
+	 * L'user envoyé et celui vérifié
+	 * @param user
+	 */
+	
 	public UserManager(User user) {
 		this.base = user;
 		this.user = null;
 	}
 	
+	/**
+	 * Charge l'user dans le cadre de la connexion.
+	 */
 	@SuppressWarnings({ "rawtypes" })
 	private void loadUser() {
 		String sql = "SELECT email, pwd, admin FROM users WHERE email= ?";
@@ -66,6 +74,10 @@ public class UserManager {
 		return this.user.getAdmin();
 	}
 	
+	/**
+	 * Vérifie si l'utilisateur existe bien, si son mot de passe est le bon et si il est admin 
+	 * @return boolean
+	 */
 	public boolean checkAccount() {
 		this.loadUser();
 		if(this.checkEmail() == true && this.checkPwd() == true && this.checkAdmin() == true) {
