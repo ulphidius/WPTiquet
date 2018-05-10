@@ -8,6 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -20,27 +21,27 @@ public class ExcelPanel extends JPanel{
 
 	private static final long serialVersionUID = 2539420442258270353L;
 	
-	JTextField field = null;
+	private JTextField field = null;
+	
 	public ExcelPanel() {
-		this.setLayout(new GridBagLayout());
-		GridBagConstraints gbl = new GridBagConstraints();
+		this.setLayout(new GridLayout(15, 15));
 		
 		
-		field = new JTextField("Entrez le nom du fichier");
-		field.setPreferredSize(new Dimension(150, 25));
+		this.field = new JTextField("Entrez le nom du fichier");
+		this.field.setPreferredSize(new Dimension(150, 25));
 		 
 		SkeletonButton button = new SkeletonButton("Export Data Base");
 		button.addActionListener(new ButtonListener1());
 		
-		gbl.gridx = 0;
-		gbl.gridy = 0;
-		gbl.gridheight = 1;
-		gbl.gridwidth = GridBagConstraints.REMAINDER;
+		SkeletonButton button2 = new SkeletonButton("Export Tiquet");
+		button2.addActionListener(new ButtonListener2());
 		
-		this.add(this.field, gbl);
-		gbl.gridx = 0;
-		gbl.gridy = 1;
-		this.add(button, gbl);
+		for(int i = 0; i < 6; i++) {
+			this.add(new JLabel());
+		}
+		this.add(this.field);
+		this.add(button);
+		this.add(button2);
 		
 	}
 	
@@ -50,6 +51,14 @@ public class ExcelPanel extends JPanel{
 		public void actionPerformed(ActionEvent arg0) {
 			ProcessExport ex = new ProcessExport((field.getText() == null) ? "ExportDataBase" : field.getText().trim());
 			ex.exportExcel(ConnectionDB.getInstance(Configuration.getInstance().generateUrl()));
+		}
+	}
+	class ButtonListener2 implements ActionListener{
+		
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+			ProcessExport ex = new ProcessExport((field.getText() == null) ? "ExportTicket" : field.getText().trim());
+			ex.exportExcelTicket(ConnectionDB.getInstance(Configuration.getInstance().generateUrl()));
 		}
 	}
 }

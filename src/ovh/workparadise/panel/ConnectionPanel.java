@@ -44,16 +44,16 @@ public class ConnectionPanel extends JPanel{
 		button.setSize(new Dimension(20, 20));
 		button.addActionListener(new ButtonListener1());
 		
-		panel.add(new JLabel());
-		panel.add(new JLabel());
-		panel.add(new JLabel());
-		panel.add(new JLabel());
-		panel.add(new JLabel());
+		for(int i = 0; i < 5; i++) {
+			panel.add(new JLabel());	
+		}
 		panel.add(this.email);
 		panel.add(this.pwd);
 		panel.add(button);
+		
 		this.add(new JLabel("                                                         "), BorderLayout.WEST);
 		this.add(new JLabel("                                                         "), BorderLayout.EAST);
+		
 		this.add(panel, BorderLayout.CENTER);
 		
 	}

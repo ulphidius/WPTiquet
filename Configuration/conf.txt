@@ -1,5 +1,5 @@
 #C'est un fichier de configuration il est preferable de ne pas le supprimer ou l'editer manuellement
-#Tue May 01 18:08:11 CEST 2018
+#Wed May 09 11:46:36 CEST 2018
 user=test
 password=test
 type=mysql

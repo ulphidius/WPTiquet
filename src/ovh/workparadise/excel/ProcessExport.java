@@ -37,6 +37,10 @@ import ovh.workparadise.classedb.SubUser;
 import ovh.workparadise.classedb.SubUserManager;
 import ovh.workparadise.classedb.Subscription;
 import ovh.workparadise.classedb.SubscriptionManager;
+import ovh.workparadise.classedb.Ticket;
+import ovh.workparadise.classedb.TicketManager;
+import ovh.workparadise.classedb.TicketMessage;
+import ovh.workparadise.classedb.TicketMessageManager;
 import ovh.workparadise.classedb.User;
 import ovh.workparadise.classedb.UserManager;
 
@@ -159,7 +163,11 @@ public class ProcessExport {
 		    }
 	}
 	
-	// Les fonctions d'exportation des données sous forme Excel
+	/**
+	 * Exportation de User prend entrée le nom de la feuille et la connection à la base de donnée
+	 * @param name
+	 * @param db
+	 */
 	public void exportUser(String name, ConnectionDB db) {
 		UserManager user = new UserManager();
 		ArrayList<User> list = user.loadAllUser(db);
@@ -167,7 +175,7 @@ public class ProcessExport {
 		
 		this.createSheet(name);
 		this.row = this.sheet.createRow(0);
-		this.setHeader(listName, name);
+		this.setHeader(listName);
 		
 		for(int i = 0; i < list.size(); i++) {    
 		    this.row = sheet.createRow(i + 1);
@@ -184,6 +192,11 @@ public class ProcessExport {
 	
 	}
 	
+	/**
+	 * Exportation de SubUser prend entrée le nom de la feuille et la connection à la base de donnée
+	 * @param name
+	 * @param db
+	 */	
 	public void exportSubUser(String name, ConnectionDB db) {
 		SubUserManager user = new SubUserManager();
 		ArrayList<SubUser> list = user.loadAllUser(db);
@@ -191,7 +204,7 @@ public class ProcessExport {
 		
 		this.createSheet(name);
 		this.row = this.sheet.createRow(0);
-		this.setHeader(listName, name);
+		this.setHeader(listName);
 		
 		for(int i = 0; i < list.size(); i++) {    
 		    this.row = sheet.createRow(i + 1);
@@ -203,6 +216,11 @@ public class ProcessExport {
 		}
 	}
 	
+	/**
+	 * Exportation de Suscription prend entrée le nom de la feuille et la connection à la base de donnée
+	 * @param name
+	 * @param db
+	 */
 	public void exportSubscription(String name, ConnectionDB db) {
 		SubscriptionManager manager = new SubscriptionManager();
 		ArrayList<Subscription> list = manager.loadAllUser(db);
@@ -210,7 +228,7 @@ public class ProcessExport {
 		
 		this.createSheet(name);
 		this.row = this.sheet.createRow(0);
-		this.setHeader(listName, name);
+		this.setHeader(listName);
 		
 		for(int i = 0; i < list.size(); i++) {    
 		    this.row = sheet.createRow(i + 1);
@@ -227,6 +245,11 @@ public class ProcessExport {
 		
 	}
 	
+	/**
+	 * Exportation de Site prend entrée le nom de la feuille et la connection à la base de donnée
+	 * @param name
+	 * @param db
+	 */
 	public void exportSite(String name, ConnectionDB db) {
 		SiteManager site = new SiteManager();
 		ArrayList<Site> list = site.loadAllUser(db);
@@ -234,7 +257,7 @@ public class ProcessExport {
 
 		this.createSheet(name);
 		this.row = this.sheet.createRow(0);
-		this.setHeader(listName, name);
+		this.setHeader(listName);
 		
 		for(int i = 0; i < list.size(); i++) {
 			this.row = sheet.createRow(i + 1);
@@ -249,6 +272,11 @@ public class ProcessExport {
 		}
 	}
 	
+	/**
+	 * Exportation de ServiceCommandList prend entrée le nom de la feuille et la connection à la base de donnée
+	 * @param name
+	 * @param db
+	 */
 	public void exportServiceCommandList(String name, ConnectionDB db) {
 		ServiceCommandListManager service = new ServiceCommandListManager();
 		ArrayList<ServiceCommandList> list = service.loadAllUser(db);
@@ -256,7 +284,7 @@ public class ProcessExport {
 
 		this.createSheet(name);
 		this.row = this.sheet.createRow(0);
-		this.setHeader(listName, name);
+		this.setHeader(listName);
 		
 		for(int i = 0; i < list.size(); i++) {
 			this.row = sheet.createRow(i + 1);
@@ -266,6 +294,11 @@ public class ProcessExport {
 		}
 	}
 	
+	/**
+	 * Exportation de ServiceCommand prend entrée le nom de la feuille et la connection à la base de donnée
+	 * @param name
+	 * @param db
+	 */
 	public void exportServiceCommand(String name, ConnectionDB db) {
 		ServiceCommandManager service = new ServiceCommandManager();
 		ArrayList<ServiceCommand> list = service.loadAllUser(db);
@@ -273,7 +306,7 @@ public class ProcessExport {
 
 		this.createSheet(name);
 		this.row = this.sheet.createRow(0);
-		this.setHeader(listName, name);
+		this.setHeader(listName);
 		
 		for(int i = 0; i < list.size(); i++) {
 			this.row = sheet.createRow(i + 1);
@@ -286,6 +319,11 @@ public class ProcessExport {
 		}
 	}
 	
+	/**
+	 * Exportation de Room prend entrée le nom de la feuille et la connection à la base de donnée
+	 * @param name
+	 * @param db
+	 */
 	public void exportRoom(String name, ConnectionDB db) {
 		RoomManager room = new RoomManager();
 		ArrayList<Room> list = room.loadAllUser(db);
@@ -293,7 +331,7 @@ public class ProcessExport {
 	
 		this.createSheet(name);
 		this.row = this.sheet.createRow(0);
-		this.setHeader(listName, name);
+		this.setHeader(listName);
 		
 		for(int i = 0; i < list.size(); i++) {
 			this.row = sheet.createRow(i + 1);
@@ -306,6 +344,11 @@ public class ProcessExport {
 		}
 	}
 	
+	/**
+	 * Exportation de ReservationRoom prend entrée le nom de la feuille et la connection à la base de donnée
+	 * @param name
+	 * @param db
+	 */
 	public void exportReservationRoom(String name, ConnectionDB db) {
 		ReservationRoomManager reservationRoom = new ReservationRoomManager();
 		ArrayList<ReservationRoom> list = reservationRoom.loadAllUser(db);
@@ -313,7 +356,7 @@ public class ProcessExport {
 		
 		this.createSheet(name);
 		this.row = this.sheet.createRow(0);
-		this.setHeader(listName, name);
+		this.setHeader(listName);
 		
 		for(int i = 0; i < list.size(); i++) {
 			this.row = sheet.createRow(i + 1);
@@ -327,6 +370,11 @@ public class ProcessExport {
 		}
 	}
 	
+	/**
+	 * Exportation de Message prend entrée le nom de la feuille et la connection à la base de donnée
+	 * @param name
+	 * @param db
+	 */
 	public void exportMessage(String name, ConnectionDB db) {
 		MessageManager message = new MessageManager();
 		ArrayList<Message> list = message.loadAllUser(db);
@@ -334,7 +382,7 @@ public class ProcessExport {
 		
 		this.createSheet(name);
 		this.row = this.sheet.createRow(0);
-		this.setHeader(listName, name);
+		this.setHeader(listName);
 		
 		for(int i = 0; i < list.size(); i++) {
 			this.row = sheet.createRow(i + 1);
@@ -344,6 +392,11 @@ public class ProcessExport {
 		}
 	}
 	
+	/**
+	 * Exportation de MakeReservation prend entrée le nom de la feuille et la connection à la base de donnée
+	 * @param name
+	 * @param db
+	 */
 	public void exportMakeReservation(String name, ConnectionDB db) {
 		MakeReservationManager makeReservation = new MakeReservationManager();
 		ArrayList<MakeReservation> list = makeReservation.loadAllUser(db);
@@ -351,7 +404,7 @@ public class ProcessExport {
 		
 		this.createSheet(name);
 		this.row = this.sheet.createRow(0);
-		this.setHeader(listName, name);
+		this.setHeader(listName);
 		
 		for(int i = 0; i < list.size(); i++) {
 			this.row = sheet.createRow(i + 1);
@@ -361,6 +414,11 @@ public class ProcessExport {
 		}
 	}
 	
+	/**
+	 * Exportation de HardwareCommandList prend entrée le nom de la feuille et la connection à la base de donnée
+	 * @param name
+	 * @param db
+	 */
 	public void exportHardwareCommandList(String name, ConnectionDB db) {
 		HardwareCommandListManager hardware = new HardwareCommandListManager();
 		ArrayList<HardwareCommandList> list = hardware.loadAllUser(db);
@@ -368,7 +426,7 @@ public class ProcessExport {
 		
 		this.createSheet(name);
 		this.row = this.sheet.createRow(0);
-		this.setHeader(listName, name);
+		this.setHeader(listName);
 		
 		for(int i = 0; i < list.size(); i++) {
 			this.row = sheet.createRow(i + 1);
@@ -380,6 +438,11 @@ public class ProcessExport {
 		}
 	}
 	
+	/**
+	 * Exportation de HardwareCommand prend entrée le nom de la feuille et la connection à la base de donnée
+	 * @param name
+	 * @param db
+	 */
 	public void exportHardwareCommand(String name, ConnectionDB db) {
 		HardwareCommandManager harware = new HardwareCommandManager();
 		ArrayList<HardwareCommand> list = harware.loadAllUser(db);
@@ -387,7 +450,7 @@ public class ProcessExport {
 		
 		this.createSheet(name);
 		this.row = this.sheet.createRow(0);
-		this.setHeader(listName, name);
+		this.setHeader(listName);
 		
 		for(int i = 0; i < list.size(); i++) {
 			this.row = sheet.createRow(i + 1);
@@ -401,7 +464,63 @@ public class ProcessExport {
 		}
 	}
 	
-	// Les fonctions d'exportation
+	/**
+	 * Exportation de Ticket prend entrée le nom de la feuille et la connection à la base de donnée
+	 * @param name
+	 * @param db
+	 */
+	public void exportTicket(String name, ConnectionDB db) {
+		TicketManager ticket = new TicketManager();
+		ArrayList<Ticket> list = ticket.loadAll(db);
+		ArrayList<String> listname = this.textTicket();
+		
+		this.createSheet(name);
+		this.row = this.sheet.createRow(0);
+		this.setHeader(listname);
+		
+		for(int i = 0; i < list.size(); i++) {
+			this.row = sheet.createRow(i + 1);
+			this.generateCellNum(list.get(i).getId(), 0, false);
+			this.generateCellNum(list.get(i).getIdUser(), 1, false);
+			this.generateCellString(list.get(i).getCategorie(), 2, false);
+			this.generateCellString(list.get(i).getSubject(), 3, false);
+			this.generateCellString(this.checkBoolean(list.get(i).getStatus()), 4, false);
+		}
+	}
+	
+	/**
+	 * Exportation de TicketMessage prend entrée le nom de la feuille et la connection à la base de donnée
+	 * @param name
+	 * @param db
+	 */
+	public void exportTicketMessage(String name, ConnectionDB db) {
+		TicketMessageManager ticket = new TicketMessageManager();
+		ArrayList<TicketMessage> list = ticket.loadAll(db);
+		ArrayList<String> listname = this.textTicketMessage();
+		
+		this.createSheet(name);
+		this.row = this.sheet.createRow(0);
+		this.setHeader(listname);
+		
+		for(int i = 0; i < list.size(); i++) {
+			this.row = sheet.createRow(i + 1);
+			this.generateCellNum(list.get(i).getId(), 0, false);
+			this.generateCellNum(list.get(i).getIdTicket(), 1, false);
+			this.generateCellString(list.get(i).getContent(), 2, false);
+			if(list.get(i).getDateSend() != null) {
+				this.generateCellString(list.get(i).getDateSend().substring(0, list.get(i).getDateSend().length()-2), 3, false);	
+			}
+			
+			this.generateCellString(this.checkBoolean(list.get(i).getType()), 4, false);
+		}
+		
+		
+	}
+	
+	/**
+	 * Exportation de l'intégralité de la base de donnée prend en entrée la connexion à la base de donnée 
+	 * @param db
+	 */
 	public void exportExcel(ConnectionDB db) {
 		this.exportUser("User", db);
 		this.exportSubUser("Sub User", db);
@@ -415,9 +534,26 @@ public class ProcessExport {
 		this.exportHardwareCommand("Hardware Command", db);
 		this.exportHardwareCommandList("Hardware Command List", db);
 		this.exportMessage("Message", db);
+		this.exportTicket("Ticket", db);
+		this.exportTicketMessage("TicketMessage", db);
 		
 	}
 	
+	/**
+	 * Exportation des Tiquets prend en entrée la connexion à la base de donnée 
+	 * @param db
+	 */
+	public void exportExcelTicket(ConnectionDB db) {
+		this.exportTicket("Ticket", db);
+		this.exportTicketMessage("TicketMessage", db);
+		
+	}
+	
+	/**
+	 * Transformation d'un boolean en String, prend en entrée le booelan à vérifier
+	 * @param target
+	 * @return
+	 */
 	private String checkBoolean(Boolean target) {
 		if(target == true) {
 			return "true";
@@ -426,12 +562,17 @@ public class ProcessExport {
 		}
 	}
 	
-	private void setHeader(ArrayList<String> list, String name) {
+	/**
+	 * Génération d'une ligne de nom de colonnes, prend en entrée une liste avec les noms 
+	 * @param list
+	 */
+	private void setHeader(ArrayList<String> list) {
 		for(int i = 0; i < list.size(); i++) {
 			this.generateCellString(list.get(i), i, true);
 		}
 	}
 	
+	// Fonctions de donnée en dure pour les noms des colonnes
 	private ArrayList<String> textUser(){
 		ArrayList<String> list = new ArrayList<String>();
 		list.add("Id");
@@ -561,6 +702,26 @@ public class ProcessExport {
 		list.add("Status");
 		list.add("Price");
 		list.add("Site");
+		return list;
+	}
+	
+	private ArrayList<String> textTicket(){
+		ArrayList<String> list = new ArrayList<String>();
+		list.add("id");
+		list.add("idUser");
+		list.add("categorie");
+		list.add("subject");
+		list.add("status");
+		return list;
+	}
+	
+	private ArrayList<String> textTicketMessage(){
+		ArrayList<String> list = new ArrayList<String>();
+		list.add("id");
+		list.add("idTicket");
+		list.add("content");
+		list.add("dataSend");
+		list.add("type");
 		return list;
 	}
 }

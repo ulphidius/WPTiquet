@@ -13,10 +13,13 @@ import ovh.workparadise.excel.ProcessExport;
 import ovh.workparadise.panel.ConnectionPanel;
 import ovh.workparadise.panel.MenuPanel;
 import ovh.workparadise.utils.Configuration;
+import ovh.workparadise.utils.FolderExist;
 
 public class Main {
 	public static void main(String[] args) {
 		
+		FolderExist folder = new FolderExist();
+		folder.createFolder();
 		Configuration.getInstance().configurationFileExist();
 		Configuration.getInstance().readFile();
 		
